@@ -1,4 +1,5 @@
 import Input from "./Input";
 import Button from "./Button";
 import Gap from "./Gap";
-export { Input, Button, Gap };
+import Upload from "./Upload";
+export { Input, Button, Gap, Upload };
