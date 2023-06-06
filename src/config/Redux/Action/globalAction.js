@@ -1,7 +1,7 @@
 import Axios from "axios";
 import jwtDecode from "jwt-decode";
 import AxiosJWTConfig from "../../../utils/axiosJWT";
-import { initSwalError } from "../../../utils/alert-initiator";
+import { initSwalError, initSwalSuccess } from "../../../utils/alert-initiator";
 const api = import.meta.env.VITE_API_SERVER;
 
 export const refreshToken = () => async (dispatch) => {
@@ -22,7 +22,7 @@ export const refreshToken = () => async (dispatch) => {
 export const dataUser = (token) => async (dispatch) => {
   try {
     const decoded = await jwtDecode(token);
-    const axiosJWT = dispatch(AxiosJWTConfig(decoded.exp));
+    const axiosJWT = await dispatch(AxiosJWTConfig(decoded.exp));
     const response = await axiosJWT.get(`users/${decoded.id}`, {
       withCredentials: true,
       headers: {
@@ -35,5 +35,24 @@ export const dataUser = (token) => async (dispatch) => {
     const errorMessage = error.message;
     initSwalError(errorMessage);
     return Promise.reject(errorMessage);
+  }
+};
+export const updateUser = (token, isUpdate, formData) => async (dispatch) => {
+  try {
+    const decoded = await jwtDecode(token);
+    const axiosJWT = await dispatch(AxiosJWTConfig(decoded.exp));
+    await axiosJWT.patch(`users/${decoded.id}`, formData, {
+      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    initSwalSuccess("Successfully Update Profile");
+    dispatch({ type: "SET_UPDATE", payload: !isUpdate });
+    return Promise.resolve(true);
+  } catch (error) {
+    const errorMessage = error?.response?.data.message;
+    initSwalError(errorMessage || error.message);
+    return Promise.reject(errorMessage || error.message);
   }
 };

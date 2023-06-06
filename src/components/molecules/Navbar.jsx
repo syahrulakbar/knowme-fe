@@ -1,7 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { BiCodeAlt } from "react-icons/bi";
-import { FaLaptopCode } from "react-icons/fa";
-import { TbCertificate, TbBrandGoogleAnalytics } from "react-icons/tb";
+import { BiCodeAlt, FaLaptopCode, TbCertificate, TbBrandGoogleAnalytics } from "../../utils/icon-library";
 
 const Navbar = () => {
   return (

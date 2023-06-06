@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { dataUser } from "../config/Redux/Action";
 
 function MainApp() {
-  const { token } = useSelector((state) => state.globalReducer);
+  const { token, isUpdate } = useSelector((state) => state.globalReducer);
   const dispatch = useDispatch();
   const getDataUser = async () => {
     try {
@@ -17,7 +17,7 @@ function MainApp() {
   };
   useEffect(() => {
     getDataUser();
-  }, []);
+  }, [isUpdate]);
   return (
     <Layout>
       <Routes>
