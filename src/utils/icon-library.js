@@ -5,8 +5,28 @@ import { CgDanger } from "react-icons/cg";
 import { RiDeleteBin5Line, RiLogoutCircleRLine } from "react-icons/ri";
 import { HiMoon } from "react-icons/hi";
 import { IoMdAdd } from "react-icons/io";
-import { BiCodeAlt } from "react-icons/bi";
+import { BiCodeAlt, BiPencil } from "react-icons/bi";
 import { FaLaptopCode } from "react-icons/fa";
 import { TbCertificate, TbBrandGoogleAnalytics } from "react-icons/tb";
 import { TiWeatherSunny } from "react-icons/ti";
-export { IoMdAdd, AiFillCamera, TiWeatherSunny, HiMoon, RiLogoutCircleRLine, BiCodeAlt, FaLaptopCode, TbCertificate, TbBrandGoogleAnalytics, RiDeleteBin5Line, CiLock, AiOutlineMail, VscEye, VscEyeClosed, CgDanger };
+import { BsFillPatchCheckFill } from "react-icons/bs";
+
+export {
+  BiPencil,
+  BsFillPatchCheckFill,
+  IoMdAdd,
+  AiFillCamera,
+  TiWeatherSunny,
+  HiMoon,
+  RiLogoutCircleRLine,
+  BiCodeAlt,
+  FaLaptopCode,
+  TbCertificate,
+  TbBrandGoogleAnalytics,
+  RiDeleteBin5Line,
+  CiLock,
+  AiOutlineMail,
+  VscEye,
+  VscEyeClosed,
+  CgDanger,
+};

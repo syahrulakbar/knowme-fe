@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
 const Button = ({ children, ...rest }) => {
-  const { label, icon } = rest;
+  const { label, icon, type = "button" } = rest;
   return (
-    <button role="button" {...rest} aria-label={`button ${label ? label : ""}`}>
+    <button type={type} role="button" {...rest} aria-label={`button ${label ? label : ""}`}>
       {icon && icon}
       {label}
       {children}

@@ -6,7 +6,7 @@ const Footer = () => {
       </div>
       <div className="container mx-auto flex justify-center mb-3">
         <p className={`text-black dark:text-white`}>
-          Made with <span className="animate-pulse">❤️</span> by{" "}
+          Made with <span className="animate-pulse text-red-500">❤️</span> by{" "}
           <a aria-label="link to my instagram" href="https://www.instagram.com/sepatukuhitamkotor/" className="text-sky-900 dark:text-sky-400 font-medium">
             Mochamad Syahrul Akbar
           </a>

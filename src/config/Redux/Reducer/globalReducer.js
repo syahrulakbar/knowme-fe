@@ -2,7 +2,10 @@ const initialState = {
   token: "",
   account: {},
   isUpdate: false,
-  showModal: false,
+  showModal: {
+    isShow: false,
+    modal: "",
+  },
 };
 
 const globalReducer = (state = initialState, action) => {

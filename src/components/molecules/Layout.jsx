@@ -3,13 +3,14 @@ import { TiWeatherSunny, HiMoon, RiLogoutCircleRLine } from "../../utils/icon-li
 import PropTypes from "prop-types";
 import { logout } from "../../config/Redux/Action";
 import { useNavigate } from "react-router-dom";
-import { ProfileModal } from "./Modal";
+import { ExperienceModal, ProfileModal } from "./Modal";
 import { ProfileBar, Footer, Navbar } from "./index";
 import { useDispatch, useSelector } from "react-redux";
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const { showModal } = useSelector((state) => state.globalReducer);
+  const { modal, isShow } = showModal;
   const [darkMode, setDarkMode] = useState(localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches));
   const navigate = useNavigate();
   const toggleDarkMode = () => {
@@ -28,7 +29,7 @@ const Layout = ({ children }) => {
   };
   const handleShowModal = (event) => {
     event.preventDefault();
-    dispatch({ type: "TOGGLE_MODAL", payload: true });
+    dispatch({ type: "TOGGLE_MODAL", payload: { isShow: true, modal: "profile" } });
   };
   useEffect(() => {
     if (darkMode) {
@@ -41,9 +42,10 @@ const Layout = ({ children }) => {
   return (
     <>
       <section id="container-all" className={` dark:text-white text-black container mx-auto flex relative justify-center min-h-screen w-full`}>
-        {showModal && (
+        {isShow && (
           <div className={`fixed flex justify-center items-center w-full h-screen top-0 right-0 bg-black bg-opacity-25 backdrop-filter backdrop-blur-sm z-50`}>
-            <ProfileModal />
+            {modal === "profile" && <ProfileModal />}
+            {modal === "experience" && <ExperienceModal />}
           </div>
         )}
         <div id="container-content" className=" justify-center flex w-full lg:w-[80%]">
@@ -64,7 +66,7 @@ const Layout = ({ children }) => {
             <ProfileBar />
             <section id="main-profile">
               <Navbar />
-              <main>{children}</main>
+              <main className="overflow-x-hidden">{children}</main>
             </section>
           </div>
         </div>

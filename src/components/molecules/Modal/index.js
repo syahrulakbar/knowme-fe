@@ -1,2 +1,3 @@
 import ProfileModal from "./ProfileModal";
-export { ProfileModal };
+import ExperienceModal from "./ExperienceModal";
+export { ProfileModal, ExperienceModal };

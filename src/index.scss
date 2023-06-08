@@ -23,6 +23,10 @@ input:disabled {
   @apply bg-gray-200 cursor-not-allowed;
 }
 
+.education-rounder {
+  @apply w-[13px] h-[13px] rounded-full;
+}
+
 ::-webkit-scrollbar {
   @apply w-1 h-1;
 }
