@@ -107,8 +107,8 @@ const ProfileModal = () => {
 
   useEffect(() => {
     if (user) {
-      setSosialMedia(user?.sosialMedia);
-      setImgPreview(`http://localhost:3000/assets/${user?.picture}`);
+      user?.sosialMedia && setSosialMedia(user?.sosialMedia);
+      user?.picture && setImgPreview(`http://localhost:3000/assets/${user?.picture}`);
     }
   }, [user]);
 
@@ -121,7 +121,7 @@ const ProfileModal = () => {
             <div className="w-full">
               <div className="w-full flex justify-center">
                 <div className="relative w-[200px] h-[200px]">
-                  <img loading="lazy" className=" object-cover object-top absolute inset-0 w-full h-full p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src={imgPreview || ProfilePicture} alt="Bordered avatar" />
+                  <img loading="lazy" className="object-cover object-top absolute inset-0 w-full h-full p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src={imgPreview ?? ProfilePicture} alt="Bordered avatar" />
                   <Input accept="image/*" id="picture" name="picture" type="file" className="absolute z-10 p-0 h-[200px] opacity-0" onChange={(event) => handleChangeImage(event)} />
                   <div className="absolute right-5 bottom-0 p-2 rounded-full bg-white text-black ring-2 ring-gray-300 dark:ring-gray-500">
                     <AiFillCamera size={30} />

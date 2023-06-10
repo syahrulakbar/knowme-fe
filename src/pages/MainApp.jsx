@@ -25,7 +25,7 @@ function MainApp() {
         <Route exact path="/certificate" element={<Certificate />} />
         <Route exact path="/project" element={<Projects />} />
         <Route exact path="/skill" element={<Skills />} />
-        <Route exact path="/*" element={<Projects />} />
+        <Route exact path="/*" element={<Experience />} />
       </Routes>
     </Layout>
   );

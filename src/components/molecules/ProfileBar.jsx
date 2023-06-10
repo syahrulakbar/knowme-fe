@@ -45,7 +45,7 @@ const ProfileBar = () => {
           </div>
           <div className="w-full">
             <h2 className="font-medium text-lg text-left">About Me</h2>
-            <p className="font-light">{user?.about || `Ordinary Random Peopl`}</p>
+            <p className="font-light">{user?.about || `Ordinary Random People`}</p>
           </div>
         </div>
       </div>

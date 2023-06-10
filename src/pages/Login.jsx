@@ -16,7 +16,7 @@ const Login = () => {
       await loginAccount(values);
       formik.setSubmitting(false);
       formik.resetForm();
-      navigate("/profile");
+      navigate("/");
     } catch (error) {
       formik.setSubmitting(false);
       setErrorMessage(error.message);

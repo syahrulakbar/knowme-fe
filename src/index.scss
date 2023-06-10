@@ -5,7 +5,7 @@
 
 * {
   font-family: Poppins, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  @apply p-0 m-0;
+  @apply p-0 m-0 break-all;
 }
 div.error {
   @apply text-xs text-red-500;
