@@ -6,7 +6,7 @@ const initSwalSuccess = (title) => {
     toast: true,
     position: "top-end",
     icon: "success",
-    width: "max-content",
+    width: "max-width",
     showConfirmButton: false,
     didOpen: (toast) => {
       toast.addEventListener("mouseenter", Swal.stopTimer);

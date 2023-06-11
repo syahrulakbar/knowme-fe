@@ -1,3 +1,4 @@
 import ProfileModal from "./ProfileModal";
 import ExperienceModal from "./ExperienceModal";
-export { ProfileModal, ExperienceModal };
+import SkillsModal from "./SkillsModal";
+export { ProfileModal, ExperienceModal, SkillsModal };

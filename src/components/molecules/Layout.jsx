@@ -3,7 +3,7 @@ import { TiWeatherSunny, HiMoon, RiLogoutCircleRLine } from "../../utils/icon-li
 import PropTypes from "prop-types";
 import { logout } from "../../config/Redux/Action";
 import { useNavigate } from "react-router-dom";
-import { ExperienceModal, ProfileModal } from "./Modal";
+import { ExperienceModal, ProfileModal, SkillsModal } from "./Modal";
 import { ProfileBar, Footer, Navbar } from "./index";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -46,6 +46,7 @@ const Layout = ({ children }) => {
           <div className={`fixed flex justify-center items-center w-full h-screen top-0 right-0 bg-black bg-opacity-25 backdrop-filter backdrop-blur-sm z-50`}>
             {modal === "profile" && <ProfileModal />}
             {modal === "experience" && <ExperienceModal />}
+            {modal === "skill" && <SkillsModal />}
           </div>
         )}
         <div id="container-content" className=" justify-center flex w-full lg:w-[80%]">

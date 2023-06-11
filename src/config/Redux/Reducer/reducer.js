@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import globalReducer from "./globalReducer";
 import experienceReducer from "./experienceReducer";
-const reducer = combineReducers({ globalReducer, experienceReducer });
+import skillReducer from "./skillReducer";
+const reducer = combineReducers({ globalReducer, experienceReducer, skillReducer });
 export default reducer;
