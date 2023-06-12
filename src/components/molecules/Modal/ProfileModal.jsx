@@ -27,7 +27,7 @@ const ProfileModal = () => {
       await dispatch(updateUser(token, isUpdate, formData));
       dispatch({ type: "TOGGLE_MODAL", payload: { isShow: false, modal: "" } });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

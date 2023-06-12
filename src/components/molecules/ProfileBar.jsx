@@ -4,6 +4,7 @@ import ProfilePicture from "../../assets/images/profilePicture.png";
 const ProfileBar = () => {
   const { account } = useSelector((state) => state.globalReducer);
   const { user } = account;
+
   return (
     <div id="head-profile" className=" transition duration-150 ease-in-out flex flex-wrap xl:flex-nowrap w-full relative">
       <div id="profile-image" className="w-full flex justify-center xl:justify-end xl:w-[30%] mx-4">

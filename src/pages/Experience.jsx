@@ -9,6 +9,7 @@ const Experience = () => {
   const { token, isUpdate } = useSelector((state) => state.globalReducer);
   const { experience } = useSelector((state) => state.experienceReducer);
   const handleShowModal = (event, id) => {
+    event.preventDefault();
     dispatch({ type: "TOGGLE_MODAL", payload: { isShow: true, modal: "experience" } });
     dispatch({ type: "UPDATE_EXPERIENCE", payload: id || "" });
   };
@@ -16,7 +17,7 @@ const Experience = () => {
     try {
       dispatch(getAllExperience(token));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -25,7 +26,7 @@ const Experience = () => {
     try {
       dispatch(deleteExperience(token, id, isUpdate));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   useEffect(() => {

@@ -18,7 +18,7 @@ const Skills = () => {
     try {
       dispatch(deleteSkills(token, id, isUpdate));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

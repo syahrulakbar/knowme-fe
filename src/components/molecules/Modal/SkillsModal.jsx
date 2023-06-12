@@ -22,7 +22,7 @@ const SkillsModal = () => {
       dispatch(addSkills(token, isUpdate, data));
       dispatch({ type: "TOGGLE_MODAL", payload: { isShow: false, modal: "" } });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const handleUpdate = async (values) => {
@@ -34,7 +34,7 @@ const SkillsModal = () => {
       dispatch(updateSkills({ id, token, data, isUpdate }));
       dispatch({ type: "TOGGLE_MODAL", payload: { isShow: false, modal: "" } });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

@@ -9,10 +9,11 @@ import { BiCodeAlt, BiPencil } from "react-icons/bi";
 import { FaLaptopCode } from "react-icons/fa";
 import { TbCertificate, TbBrandGoogleAnalytics } from "react-icons/tb";
 import { TiWeatherSunny } from "react-icons/ti";
-import { BsFillPatchCheckFill } from "react-icons/bs";
+import { BsFillPatchCheckFill, BsFillCalendarDateFill } from "react-icons/bs";
 
 export {
   BiPencil,
+  BsFillCalendarDateFill,
   BsFillPatchCheckFill,
   IoMdAdd,
   AiFillCamera,
