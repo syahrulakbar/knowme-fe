@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Gap } from "../components";
 import { BiPencil, BsFillPatchCheckFill, RiDeleteBin5Line } from "../utils/icon-library";
 import { deleteSkills } from "../config/Redux/Action";
+import { initSwalError } from "../utils/alert-initiator";
 
 const Skills = () => {
   const { account, token, isUpdate } = useSelector((state) => state.globalReducer);
@@ -10,6 +11,7 @@ const Skills = () => {
 
   const handleShowModal = (event, id) => {
     event.preventDefault();
+    if (skills?.length >= 5 && !id) return initSwalError("Sorry cannot add skills again :(");
     dispatch({ type: "TOGGLE_MODAL", payload: { isShow: true, modal: "skill" } });
     dispatch({ type: "UPDATE_SKILL", payload: id || "" });
   };

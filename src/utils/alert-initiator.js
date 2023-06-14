@@ -22,7 +22,7 @@ const initSwalError = (title) => {
     toast: true,
     icon: "error",
     position: "top-end",
-    width: "max-width",
+    width: "max-content",
     showConfirmButton: false,
     didOpen: (toast) => {
       toast.addEventListener("mouseenter", Swal.stopTimer);

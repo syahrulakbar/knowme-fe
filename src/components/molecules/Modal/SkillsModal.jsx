@@ -6,12 +6,25 @@ import { useEffect, useState } from "react";
 import { addSkills, getSkillById, updateSkills } from "../../../config/Redux/Action";
 import { initSwalError } from "../../../utils/alert-initiator";
 import { IoMdAdd, RiDeleteBin5Line } from "../../../utils/icon-library";
+import _ from "lodash";
 
 const SkillsModal = () => {
   const dispatch = useDispatch();
   const [detailSkills, setDetailSkills] = useState([{ basic: "" }]);
-  const { token, isUpdate } = useSelector((state) => state.globalReducer);
+  const { token, isUpdate, account } = useSelector((state) => state.globalReducer);
   const { skillById, id } = useSelector((state) => state.skillReducer);
+  const { skills } = account;
+
+  const labelCategory = ["Android Developement", "Web Developement", "Framework", "Database", "Version Control System"];
+  const uniqueCategories = _.difference(
+    labelCategory,
+    skills?.map((item) => item.categorySkills)
+  );
+
+  const handleChangeCategory = (event) => {
+    const value = event.target.value;
+    formik.setFieldValue("categorySkills", value);
+  };
 
   const handleSubmit = async (values) => {
     const data = {
@@ -41,7 +54,7 @@ const SkillsModal = () => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      categorySkills: skillById?.categorySkills || "Android Developement",
+      categorySkills: skillById?.categorySkills || uniqueCategories[0],
     },
     validationSchema: Yup.object({
       categorySkills: Yup.string().required("Category Skills is required"),
@@ -100,8 +113,6 @@ const SkillsModal = () => {
     }
   }, [id]);
 
-  const labelCategory = ["Android Developement", "Web Developement", "Framework", "Database", "Version Control System"];
-
   return (
     <>
       <div className="w-[80%] max-h-[95vh] md:max-h-max  bg-white text-black dark:text-white dark:bg-black rounded-lg  z-10 overflow-y-auto p-2">
@@ -110,8 +121,15 @@ const SkillsModal = () => {
           <form className="p-2 w-full" onSubmit={formik.handleSubmit}>
             <label htmlFor="categorySkills">Category Skills</label>
             <div className="w-full">
-              <select {...formik.getFieldProps("categorySkills")} name="categorySkills" id="categorySkills" className="w-full text-black font-medium h-10 rounded-md bg-gray-200">
-                {labelCategory.map((item, id) => (
+              <select
+                disabled={id}
+                value={formik.values.categorySkills}
+                onChange={handleChangeCategory}
+                name="categorySkills"
+                id="categorySkills"
+                className="w-full text-black font-medium h-10 rounded-md bg-gray-200 disabled:cursor-not-allowed"
+              >
+                {(id ? labelCategory : uniqueCategories)?.map((item, id) => (
                   <option key={id} value={item}>
                     {item}
                   </option>
