@@ -3,10 +3,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button, Gap, Input } from "../../index";
 import { useDispatch, useSelector } from "react-redux";
-import { getCertificateById, updateCertificate } from "../../../config/Redux/Action";
-import moment from "moment";
+import { getCertificateById, updateCertificate, addCertificate } from "../../../config/Redux/Action";
 import { BsFillCalendarDateFill } from "../../../utils/icon-library";
-import { addCertificate } from "../../../config/Redux/Action";
+import moment from "moment";
 
 const CertificateModal = () => {
   const dispatch = useDispatch();

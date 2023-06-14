@@ -3,7 +3,7 @@ import { TiWeatherSunny, HiMoon, RiLogoutCircleRLine } from "../../utils/icon-li
 import PropTypes from "prop-types";
 import { logout } from "../../config/Redux/Action";
 import { useNavigate } from "react-router-dom";
-import { CertificateModal, ExperienceModal, ProfileModal, SkillsModal } from "./Modal";
+import { CertificateModal, ExperienceModal, ProfileModal, ProjectModal, SkillsModal } from "./Modal";
 import { ProfileBar, Footer, Navbar } from "./index";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -48,6 +48,7 @@ const Layout = ({ children }) => {
             {modal === "experience" && <ExperienceModal />}
             {modal === "skill" && <SkillsModal />}
             {modal === "certificate" && <CertificateModal />}
+            {modal === "project" && <ProjectModal />}
           </div>
         )}
         <div id="container-content" className=" justify-center flex w-full lg:w-[80%]">
