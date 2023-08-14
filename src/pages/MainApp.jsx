@@ -2,22 +2,22 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "../components";
 import { Certificate, Experience, Skills, Projects } from "../pages";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { dataUser } from "../config/Redux/Action";
 
 function MainApp() {
   const { token, isUpdate } = useSelector((state) => state.globalReducer);
   const dispatch = useDispatch();
-  const getDataUser = async () => {
+  const getDataUser = useCallback(async () => {
     try {
       await dispatch(dataUser(token));
     } catch (error) {
       console.error(error);
     }
-  };
+  }, [dispatch, token]);
   useEffect(() => {
     getDataUser();
-  }, [isUpdate]);
+  }, [isUpdate, getDataUser]);
   return (
     <Layout>
       <Routes>

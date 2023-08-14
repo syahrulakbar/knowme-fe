@@ -87,12 +87,14 @@ const ProjectModal = () => {
     return () => {
       dispatch({ type: "SET_PROJECT_ID", payload: {} });
     };
-  }, [id]);
+  }, [id, dispatch, token]);
 
   return (
     <>
       <div className="w-[80%] max-h-[95vh] md:max-h-max  bg-white text-black dark:text-white dark:bg-black rounded-lg  z-10 overflow-y-auto p-2">
-        <h2 className="text-center font-medium text-2xl p-2">{id ? "Edit Project" : "Add Project"}</h2>
+        <h2 className="text-center font-medium text-2xl p-2">
+          {id ? "Edit Project" : "Add Project"}
+        </h2>
         <div className="flex flex-col md:flex-row">
           <form className="certificate p-2 w-full" onSubmit={formik.handleSubmit}>
             <div className="w-full flex flex-col justify-center">
@@ -102,17 +104,45 @@ const ProjectModal = () => {
                     <AiFillCamera size={30} />
                   </div>
                 </div>
-                {imgPreview && <img loading="lazy" className="object-cover object-center absolute inset-0 w-full h-full p-1 border rounded-md" src={imgPreview} alt="Bordered avatar" />}
-                <Input accept="image/*" id="pictureProject" name="pictureProject" type="file" className="absolute z-10 p-0 h-[200px] opacity-0 cursor-pointer" onChange={(event) => handleChangeImage(event)} />
+                {imgPreview && (
+                  <img
+                    loading="lazy"
+                    className="object-cover object-center absolute inset-0 w-full h-full p-1 border rounded-md"
+                    src={imgPreview}
+                    alt="Bordered avatar"
+                  />
+                )}
+                <Input
+                  accept="image/*"
+                  id="pictureProject"
+                  name="pictureProject"
+                  type="file"
+                  className="absolute z-10 p-0 h-[200px] opacity-0 cursor-pointer"
+                  onChange={(event) => handleChangeImage(event)}
+                />
               </div>
-              {formik.errors.pictureProject && <p className="text-red-500 text-xs">{formik.errors.pictureProject}</p>}
+              {formik.errors.pictureProject && (
+                <p className="text-red-500 text-xs">{formik.errors.pictureProject}</p>
+              )}
             </div>
             <Gap height={20} />
-            <Input label="Project Name" placeholder="Ex: Portofolio Website" {...formik.getFieldProps("projectName")} />
+            <Input
+              label="Project Name"
+              placeholder="Ex: Portofolio Website"
+              {...formik.getFieldProps("projectName")}
+            />
             <Gap height={20} />
-            <Input label="Description Project" placeholder="Description your project" {...formik.getFieldProps("descriptionProject")} />
+            <Input
+              label="Description Project"
+              placeholder="Description your project"
+              {...formik.getFieldProps("descriptionProject")}
+            />
             <Gap height={20} />
-            <Input label="URL Project" placeholder="Your URL Project" {...formik.getFieldProps("urlProject")} />
+            <Input
+              label="URL Project"
+              placeholder="Your URL Project"
+              {...formik.getFieldProps("urlProject")}
+            />
             <Gap height={30} />
             <div className="w-full flex flex-col-reverse md:flex-row justify-center gap-2">
               <Button
@@ -122,7 +152,12 @@ const ProjectModal = () => {
                 type="button"
                 onClick={(event) => handleCloseModal(event)}
               />
-              <Button disabled={formik.isSubmitting} label={formik.isSubmitting ? "Loading..." : "Update"} className="bg-primary-blue dark:text-white  w-full text-white rounded-md  text-lg p-2 font-semibold" type="submit" />
+              <Button
+                disabled={formik.isSubmitting}
+                label={formik.isSubmitting ? "Loading..." : "Update"}
+                className="bg-primary-blue dark:text-white  w-full text-white rounded-md  text-lg p-2 font-semibold"
+                type="submit"
+              />
             </div>
           </form>
         </div>
